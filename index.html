@@ -193,74 +193,124 @@
       </div>
     </section>
 
-    <section id="galeri" class="py-20 bg-slate-50">
+    <section id="galeri" class="py-20 bg-slate-50 overflow-hidden">
       <div class="max-w-7xl mx-auto px-4">
-        <div class="text-center mb-12">
+        <div class="text-center mb-10">
           <h2 class="text-3xl md:text-4xl font-bold text-slate-900">
             Galeri Foto
           </h2>
           <p class="text-slate-500 mt-2">
-            Intip suasana kos kami yang asri dan rapi
+            Geser untuk melihat suasana kos kami yang asri
           </p>
         </div>
 
-        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+        <style>
+          .hide-scroll::-webkit-scrollbar {
+            display: none;
+          }
+          .hide-scroll {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+          }
+        </style>
+
+        <div
+          class="flex overflow-x-auto snap-x snap-mandatory gap-6 pb-12 hide-scroll px-4 md:px-0"
+        >
           <div
-            class="group relative overflow-hidden rounded-2xl shadow-lg cursor-pointer"
+            class="flex-none w-80 md:w-[450px] snap-center group relative rounded-2xl shadow-xl overflow-hidden"
           >
             <img
               src="assets/img/front-1.JPG"
-              class="w-full h-72 object-cover transform group-hover:scale-110 transition duration-500"
+              class="w-full h-64 md:h-80 object-cover transform group-hover:scale-110 transition duration-700"
+              alt="Tampak Depan"
             />
             <div
-              class="absolute inset-0 bg-black bg-opacity-20 group-hover:bg-opacity-10 transition"
-            ></div>
+              class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition duration-300 flex items-end p-6"
+            >
+              <span class="text-white font-medium">✨ Tampak Depan Utama</span>
+            </div>
           </div>
+
           <div
-            class="group relative overflow-hidden rounded-2xl shadow-lg cursor-pointer"
+            class="flex-none w-80 md:w-[450px] snap-center group relative rounded-2xl shadow-xl overflow-hidden"
           >
             <img
               src="assets/img/front-2.JPG"
-              class="w-full h-72 object-cover transform group-hover:scale-110 transition duration-500"
+              class="w-full h-64 md:h-80 object-cover transform group-hover:scale-110 transition duration-700"
+              alt="Halaman Parkir"
             />
+            <div
+              class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition duration-300 flex items-end p-6"
+            >
+              <span class="text-white font-medium">🅿️ Area Parkir Luas</span>
+            </div>
           </div>
+
           <div
-            class="group relative overflow-hidden rounded-2xl shadow-lg cursor-pointer"
+            class="flex-none w-80 md:w-[450px] snap-center group relative rounded-2xl shadow-xl overflow-hidden"
           >
             <img
               src="assets/img/front-3.JPG"
-              class="w-full h-72 object-cover transform group-hover:scale-110 transition duration-500"
-            />
-          </div>
-          <div
-            class="group relative overflow-hidden rounded-2xl shadow-lg cursor-pointer"
-          >
-            <img
-              src="assets/img/inside-1.JPG"
-              class="w-full h-72 object-cover transform group-hover:scale-110 transition duration-500"
+              class="w-full h-64 md:h-80 object-cover transform group-hover:scale-110 transition duration-700"
+              alt="Lorong Kos"
             />
             <div
-              class="absolute bottom-0 left-0 w-full p-4 bg-gradient-to-t from-black/70 to-transparent"
+              class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition duration-300 flex items-end p-6"
             >
-              <p class="text-white font-medium">Interior Kamar</p>
+              <span class="text-white font-medium">🌿 Lingkungan Asri</span>
             </div>
           </div>
+
           <div
-            class="group relative overflow-hidden rounded-2xl shadow-lg cursor-pointer"
-          >
-            <img
-              src="assets/img/inside-2.JPG"
-              class="w-full h-72 object-cover transform group-hover:scale-110 transition duration-500"
-            />
-          </div>
-          <div
-            class="group relative overflow-hidden rounded-2xl shadow-lg cursor-pointer"
+            class="flex-none w-80 md:w-[450px] snap-center group relative rounded-2xl shadow-xl overflow-hidden"
           >
             <img
               src="assets/img/front-4.JPG"
-              class="w-full h-72 object-cover transform group-hover:scale-110 transition duration-500"
+              class="w-full h-64 md:h-80 object-cover transform group-hover:scale-110 transition duration-700"
+              alt="Suasana Kos"
             />
           </div>
+
+          <div
+            class="flex-none w-80 md:w-[450px] snap-center group relative rounded-2xl shadow-xl overflow-hidden"
+          >
+            <img
+              src="assets/img/inside-1.JPG"
+              class="w-full h-64 md:h-80 object-cover transform group-hover:scale-110 transition duration-700"
+              alt="Kamar Tidur"
+            />
+            <div
+              class="absolute bottom-0 left-0 w-full p-4 bg-gradient-to-t from-black/80 to-transparent"
+            >
+              <p class="text-white font-bold text-lg">🛏️ Interior Kamar</p>
+              <p class="text-slate-200 text-sm">
+                Sudah termasuk kasur & lemari
+              </p>
+            </div>
+          </div>
+
+          <div
+            class="flex-none w-80 md:w-[450px] snap-center group relative rounded-2xl shadow-xl overflow-hidden"
+          >
+            <img
+              src="assets/img/inside-2.JPG"
+              class="w-full h-64 md:h-80 object-cover transform group-hover:scale-110 transition duration-700"
+              alt="Kamar Mandi Dalam"
+            />
+            <div
+              class="absolute bottom-0 left-0 w-full p-4 bg-gradient-to-t from-black/80 to-transparent"
+            >
+              <p class="text-white font-bold text-lg">🚿 Kamar Mandi Dalam</p>
+              <p class="text-slate-200 text-sm">Bersih dan nyaman</p>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="flex justify-center mt-4 text-slate-400 animate-pulse md:hidden"
+        >
+          <span class="text-sm">Geser ke samping &rarr;</span>
         </div>
       </div>
     </section>
