@@ -1,229 +1,523 @@
-<!DOCTYPE html>
-<html lang="id">
+<!doctype html>
+<html lang="id" class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Kos Santiasih</title>
-    <meta name="description" content="Kos Santiasih Tabanan. Kos nyaman, fasilitas lengkap (AC/Wi-Fi), kamar mandi dalam. Lokasi strategis & harga terjangkau." />
-    
-    <meta property="og:title" content="Kos Santiasih - Nyaman & Strategis" />
-    <meta property="og:description" content="Cari kos di Tabanan? Cek fasilitas dan foto kamar kami di sini. Mulai Rp 800rb!" />
-    <meta property="og:image" content="https://cahya03.github.io/kos-santiasih/assets/img/front-1.JPG" />
-    <meta property="og:url" content="https://cahya03.github.io/kos-santiasih/" />
-    <meta property="og:type" content="website" />
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🏠</text></svg>">
+    <title>Kos Santiasih | Hunian Nyaman Tabanan</title>
+    <meta
+      name="description"
+      content="Kos Santiasih Tabanan. Kos nyaman, fasilitas lengkap (AC/Wi-Fi), kamar mandi dalam. Lokasi strategis & harga terjangkau."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ["Poppins", "sans-serif"],
+            },
+            colors: {
+              primary: "#2563EB", // Blue 600
+              secondary: "#1E40AF", // Blue 800
+              accent: "#F59E0B", // Amber 500
+            },
+          },
+        },
+      };
+    </script>
     <style>
+      /* Agar navbar tidak menutupi judul saat diklik */
       html {
-        scroll-behavior: smooth;
+        scroll-padding-top: 5rem;
+      }
+      .glass-nav {
+        background: rgba(37, 99, 235, 0.9);
+        backdrop-filter: blur(10px);
       }
     </style>
   </head>
-  <body class="bg-gray-50 text-gray-800">
-    <!-- Navbar -->
-    <nav class="bg-blue-600 text-white fixed top-0 left-0 w-full shadow z-50">
-      <div
-        class="max-w-6xl mx-auto px-4 flex justify-between items-center h-14"
-      >
-        <a href="#home" class="font-bold text-lg">Kos Santiasih</a>
-        <!-- Menu Desktop -->
-        <div class="hidden md:flex space-x-6">
-          <a href="#tentang" class="hover:text-gray-200">Tentang</a>
-          <a href="#galeri" class="hover:text-gray-200">Galeri</a>
-          <a href="#fasilitas" class="hover:text-gray-200">Fasilitas</a>
-          <a href="#harga" class="hover:text-gray-200">Harga</a>
-          <a href="#kontak" class="hover:text-gray-200">Kontak</a>
-        </div>
-        <!-- Hamburger Button -->
-        <button id="menu-btn" class="md:hidden focus:outline-none">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            class="h-6 w-6"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
+  <body class="bg-slate-50 text-slate-800 font-sans antialiased">
+    <nav
+      class="glass-nav text-white fixed top-0 left-0 w-full shadow-lg z-50 transition-all duration-300"
+    >
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-16">
+          <div class="flex-shrink-0 flex items-center gap-2">
+            <span class="text-2xl">🏠</span>
+            <a href="#home" class="font-bold text-xl tracking-wide"
+              >Kos Santiasih</a
+            >
+          </div>
+
+          <div class="hidden md:flex space-x-8 font-medium">
+            <a href="#tentang" class="hover:text-yellow-300 transition"
+              >Tentang</a
+            >
+            <a href="#galeri" class="hover:text-yellow-300 transition"
+              >Galeri</a
+            >
+            <a href="#fasilitas" class="hover:text-yellow-300 transition"
+              >Fasilitas</a
+            >
+            <a href="#harga" class="hover:text-yellow-300 transition">Harga</a>
+            <a
+              href="#kontak"
+              class="bg-white text-primary px-4 py-2 rounded-full hover:bg-yellow-300 hover:text-secondary transition shadow-md"
+              >Hubungi Kami</a
+            >
+          </div>
+
+          <button
+            id="menu-btn"
+            class="md:hidden p-2 rounded-md hover:bg-blue-700 focus:outline-none"
           >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M4 6h16M4 12h16M4 18h16"
-            />
-          </svg>
-        </button>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-6 w-6"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M4 6h16M4 12h16M4 18h16"
+              />
+            </svg>
+          </button>
+        </div>
       </div>
-      <!-- Mobile Menu -->
-      <div
-        id="mobile-menu"
-        class="hidden md:hidden flex-col space-y-2 px-4 pb-4"
-      >
-        <a href="#tentang" class="block hover:text-gray-200">Tentang</a>
-        <a href="#galeri" class="block hover:text-gray-200">Galeri</a>
-        <a href="#fasilitas" class="block hover:text-gray-200">Fasilitas</a>
-        <a href="#harga" class="block hover:text-gray-200">Harga</a>
-        <a href="#kontak" class="block hover:text-gray-200">Kontak</a>
+
+      <div id="mobile-menu" class="hidden md:hidden bg-blue-700">
+        <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+          <a
+            href="#tentang"
+            class="block px-3 py-2 rounded-md text-base font-medium hover:bg-blue-600"
+            >Tentang</a
+          >
+          <a
+            href="#galeri"
+            class="block px-3 py-2 rounded-md text-base font-medium hover:bg-blue-600"
+            >Galeri</a
+          >
+          <a
+            href="#fasilitas"
+            class="block px-3 py-2 rounded-md text-base font-medium hover:bg-blue-600"
+            >Fasilitas</a
+          >
+          <a
+            href="#harga"
+            class="block px-3 py-2 rounded-md text-base font-medium hover:bg-blue-600"
+            >Harga</a
+          >
+          <a
+            href="#kontak"
+            class="block px-3 py-2 rounded-md text-base font-medium bg-white text-blue-700 mt-4 text-center"
+            >Hubungi Kami</a
+          >
+        </div>
       </div>
     </nav>
 
-    <!-- Hero -->
-    <section id="home" class="bg-blue-600 text-white py-20 text-center pt-28">
-      <h1 class="text-4xl md:text-5xl font-bold mb-4">Kos Santiasih</h1>
-      <p class="text-lg md:text-xl">Nyaman • Strategis • Terjangkau</p>
-    </section>
-
-    <!-- Tentang -->
-    <section id="tentang" class="max-w-5xl mx-auto px-4 py-16">
-      <h2 class="text-3xl font-bold text-center mb-6">Tentang Kos</h2>
-      <p class="text-center text-gray-600 leading-relaxed">
-        Kos Santiasih adalah kos nyaman di lokasi strategis dekat pusat kota
-        Tabanan. Fasilitas lengkap dengan harga terjangkau. Cocok untuk
-        mahasiswa maupun pekerja.
-      </p>
-    </section>
-
-    <!-- Galeri Foto -->
-    <section id="galeri" class="bg-white py-16">
-      <div class="max-w-6xl mx-auto px-4">
-        <h2 class="text-3xl font-bold text-center mb-10">Galeri Kos</h2>
-        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-          <img
-            src="assets/img/front-1.JPG"
-            class="w-full h-64 object-cover rounded-lg shadow"
-          />
-          <img
-            src="assets/img/front-2.JPG"
-            class="w-full h-64 object-cover rounded-lg shadow"
-          />
-          <img
-            src="assets/img/front-3.JPG"
-            class="w-full h-64 object-cover rounded-lg shadow"
-          />
-          <img
-            src="assets/img/front-4.JPG"
-            class="w-full h-64 object-cover rounded-lg shadow"
-          />
-          <img
-            src="assets/img/inside-1.JPG"
-            class="w-full h-64 object-cover rounded-lg shadow"
-          />
-          <img
-            src="assets/img/inside-2.JPG"
-            class="w-full h-64 object-cover rounded-lg shadow"
-          />
-        </div>
+    <section
+      id="home"
+      class="relative h-screen min-h-[600px] flex items-center justify-center text-center text-white bg-gray-900"
+    >
+      <div class="absolute inset-0 overflow-hidden">
+        <img
+          src="assets/img/front-1.JPG"
+          alt="Kos Santiasih"
+          class="w-full h-full object-cover opacity-40"
+        />
+        <div
+          class="absolute inset-0 bg-gradient-to-t from-blue-900/90 to-transparent"
+        ></div>
       </div>
-    </section>
 
-    <!-- Fasilitas -->
-    <section id="fasilitas" class="bg-gray-50 py-16">
-      <div class="max-w-5xl mx-auto px-4">
-        <h2 class="text-3xl font-bold text-center mb-10">Fasilitas</h2>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div class="p-6 border rounded-lg shadow hover:shadow-lg transition">
-            <h3 class="font-semibold text-xl mb-2">
-              Kamar Luas dan Kamar Mandi Dalam
-            </h3>
-            <p class="text-gray-600">
-              Dilengkapi kasur, lemari, dapur dan toilet duduk.
-            </p>
-          </div>
-          <div class="p-6 border rounded-lg shadow hover:shadow-lg transition">
-            <h3 class="font-semibold text-xl mb-2">Wi-Fi</h3>
-            <p class="text-gray-600">
-              Internet cepat 24 jam untuk kebutuhan kerja dan belajar.
-            </p>
-          </div>
-          <div class="p-6 border rounded-lg shadow hover:shadow-lg transition">
-            <h3 class="font-semibold text-xl mb-2">Parkir Motor</h3>
-            <p class="text-gray-600">
-              Maksmal satu motor per kamar.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Testimoni -->
-     <section class="bg-white py-16 border-t">
-      <div class="max-w-5xl mx-auto px-4">
-        <h2 class="text-3xl font-bold text-center mb-10">Kata Penghuni</h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div class="bg-gray-50 p-6 rounded-lg shadow">
-            <p class="italic text-gray-600 mb-4">"Tempatnya bagus, sangat nyaman, fasilitasnya lengkap dan akses kemana saja dekat."</p>
-            <p class="font-bold text-blue-600">- Ni Putu Setia Gari Candrani, Mahasiswa</p>
-          </div>
-          <div class="bg-gray-50 p-6 rounded-lg shadow">
-            <p class="italic text-gray-600 mb-4">"Posisi gak terlalu jauh dari jalan utama tapi nggak deket2 juga :v pokoknya pas jadi g begitu bising."</p>
-            <p class="font-bold text-blue-600">- Akhtar Alfarizi, Mahasiswa</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Harga -->
-    <section id="harga" class="bg-gray-100 py-16">
-      <div class="max-w-5xl mx-auto px-4 text-center">
-        <h2 class="text-3xl font-bold mb-6">Harga Sewa</h2>
-        <p class="text-gray-600 mb-4">
-          Mulai dari
-          <span class="text-blue-600 font-bold text-3xl">Rp 800.000/bulan</span>
-        </p>
-        <p class="text-gray-500">Belum termasuk listrik dan air*</p>
-      </div>
-    </section>
-
-    <!-- Kontak -->
-    <section id="kontak" class="bg-white py-16">
-      <div class="max-w-5xl mx-auto px-4 text-center">
-        <h2 class="text-3xl font-bold mb-6">Hubungi Kami</h2>
-
-        <!-- Google Maps -->
-        <div class="w-full h-96 rounded-lg overflow-hidden shadow-lg mb-6">
-          <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3945.6672877788483!2d115.12879319999999!3d-8.531645600000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd23bb5b2a1e959%3A0xeaf2cd70ee3828fa!2sKost%20Santiasih%20Dokabu%20Tabanan!5e0!3m2!1sid!2sid!4v1755571313057!5m2!1sid!2sid"
-            width="100%"
-            height="100%"
-            style="border: 0"
-            allowfullscreen=""
-            loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade"
-          >
-          </iframe>
-        </div>
-
-        <!-- Alamat -->
-        <p class="text-gray-600 mb-2">
-          📍 Dajan Peken, Kec. Tabanan, Kabupaten Tabanan, Bali
-          82121
-        </p>
-        <p class="text-gray-600 mb-12 font-bold text-5xl">📱 081-338-511-041</p>
-
-        <!-- Tombol WhatsApp -->
-        <a
-          href="https://wa.me/6281338511041?text=Halo,%20saya%20ingin%20bertanya%20apakah%20kos%20ini%20ada%20kamar%20kosong%3F"
-          target="_blank"
-          class="bg-green-500 text-white px-8 py-4 rounded-lg shadow hover:bg-green-600 transition"
+      <div class="relative z-10 px-4 max-w-4xl mx-auto">
+        <span
+          class="inline-block py-1 px-3 rounded-full bg-yellow-400 text-blue-900 text-sm font-bold mb-4 shadow-lg animate-bounce"
         >
-          Chat via WhatsApp
-        </a>
+          ✨ Terima Kost Putra & Putri
+        </span>
+        <h1
+          class="text-5xl md:text-7xl font-bold mb-6 leading-tight drop-shadow-lg"
+        >
+          Kos Santiasih
+        </h1>
+        <p class="text-lg md:text-2xl text-gray-200 mb-10 font-light">
+          Hunian Nyaman, Strategis, dan Terjangkau di Jantung Tabanan
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a
+            href="#galeri"
+            class="px-8 py-4 bg-primary hover:bg-blue-500 rounded-full font-semibold transition shadow-lg transform hover:-translate-y-1"
+          >
+            Lihat Kamar
+          </a>
+          <a
+            href="https://wa.me/6281338511041"
+            class="px-8 py-4 bg-transparent border-2 border-white hover:bg-white hover:text-primary rounded-full font-semibold transition shadow-lg"
+          >
+            Tanya Ketersediaan
+          </a>
+        </div>
       </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="bg-blue-600 text-white py-4 text-center">
-      <p>&copy; 2025 Ud Masih Farm and Computer.</p>
+    <section id="tentang" class="py-20 bg-white">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6">
+        <div class="text-center max-w-3xl mx-auto">
+          <h2
+            class="text-blue-600 font-semibold tracking-wide uppercase text-sm mb-2"
+          >
+            Kenapa Memilih Kami?
+          </h2>
+          <h3 class="text-3xl md:text-4xl font-bold text-slate-900 mb-6">
+            Lebih Dari Sekadar Tempat Tidur
+          </h3>
+          <p class="text-lg text-slate-600 leading-relaxed">
+            Kos Santiasih dirancang untuk memberikan kenyamanan maksimal bagi
+            mahasiswa dan pekerja. Terletak di lokasi strategis dekat pusat kota
+            Tabanan, kami menawarkan lingkungan yang tenang, bersih, dan aman,
+            serasa berada di rumah sendiri.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="galeri" class="py-20 bg-slate-50">
+      <div class="max-w-7xl mx-auto px-4">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl md:text-4xl font-bold text-slate-900">
+            Galeri Foto
+          </h2>
+          <p class="text-slate-500 mt-2">
+            Intip suasana kos kami yang asri dan rapi
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+          <div
+            class="group relative overflow-hidden rounded-2xl shadow-lg cursor-pointer"
+          >
+            <img
+              src="assets/img/front-1.JPG"
+              class="w-full h-72 object-cover transform group-hover:scale-110 transition duration-500"
+            />
+            <div
+              class="absolute inset-0 bg-black bg-opacity-20 group-hover:bg-opacity-10 transition"
+            ></div>
+          </div>
+          <div
+            class="group relative overflow-hidden rounded-2xl shadow-lg cursor-pointer"
+          >
+            <img
+              src="assets/img/front-2.JPG"
+              class="w-full h-72 object-cover transform group-hover:scale-110 transition duration-500"
+            />
+          </div>
+          <div
+            class="group relative overflow-hidden rounded-2xl shadow-lg cursor-pointer"
+          >
+            <img
+              src="assets/img/front-3.JPG"
+              class="w-full h-72 object-cover transform group-hover:scale-110 transition duration-500"
+            />
+          </div>
+          <div
+            class="group relative overflow-hidden rounded-2xl shadow-lg cursor-pointer"
+          >
+            <img
+              src="assets/img/inside-1.JPG"
+              class="w-full h-72 object-cover transform group-hover:scale-110 transition duration-500"
+            />
+            <div
+              class="absolute bottom-0 left-0 w-full p-4 bg-gradient-to-t from-black/70 to-transparent"
+            >
+              <p class="text-white font-medium">Interior Kamar</p>
+            </div>
+          </div>
+          <div
+            class="group relative overflow-hidden rounded-2xl shadow-lg cursor-pointer"
+          >
+            <img
+              src="assets/img/inside-2.JPG"
+              class="w-full h-72 object-cover transform group-hover:scale-110 transition duration-500"
+            />
+          </div>
+          <div
+            class="group relative overflow-hidden rounded-2xl shadow-lg cursor-pointer"
+          >
+            <img
+              src="assets/img/front-4.JPG"
+              class="w-full h-72 object-cover transform group-hover:scale-110 transition duration-500"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="fasilitas" class="py-20 bg-white relative overflow-hidden">
+      <div
+        class="absolute top-0 right-0 -mr-20 -mt-20 w-64 h-64 rounded-full bg-blue-50 opacity-50 blur-3xl"
+      ></div>
+
+      <div class="max-w-6xl mx-auto px-4 relative z-10">
+        <h2
+          class="text-3xl md:text-4xl font-bold text-center mb-16 text-slate-900"
+        >
+          Fasilitas Unggulan
+        </h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div
+            class="bg-white p-8 rounded-2xl border border-slate-100 shadow-xl hover:shadow-2xl transition transform hover:-translate-y-2"
+          >
+            <div
+              class="w-14 h-14 bg-blue-100 rounded-full flex items-center justify-center text-3xl mb-6"
+            >
+              🛏️
+            </div>
+            <h3 class="font-bold text-xl mb-3 text-slate-800">
+              Kamar Mandi Dalam
+            </h3>
+            <p class="text-slate-600">
+              Privasi terjaga dengan kamar mandi dalam. Kamar sudah dilengkapi
+              kasur empuk, lemari pakaian, dan meja dapur mini.
+            </p>
+          </div>
+
+          <div
+            class="bg-white p-8 rounded-2xl border border-slate-100 shadow-xl hover:shadow-2xl transition transform hover:-translate-y-2"
+          >
+            <div
+              class="w-14 h-14 bg-green-100 rounded-full flex items-center justify-center text-3xl mb-6"
+            >
+              🚀
+            </div>
+            <h3 class="font-bold text-xl mb-3 text-slate-800">
+              Free Wi-Fi Ngebut
+            </h3>
+            <p class="text-slate-600">
+              Koneksi internet stabil 24 jam. Sangat cocok untuk mahasiswa
+              mengerjakan tugas atau pekerja WFH.
+            </p>
+          </div>
+
+          <div
+            class="bg-white p-8 rounded-2xl border border-slate-100 shadow-xl hover:shadow-2xl transition transform hover:-translate-y-2"
+          >
+            <div
+              class="w-14 h-14 bg-orange-100 rounded-full flex items-center justify-center text-3xl mb-6"
+            >
+              🅿️
+            </div>
+            <h3 class="font-bold text-xl mb-3 text-slate-800">
+              Parkir Motor Luas
+            </h3>
+            <p class="text-slate-600">
+              Area parkir khusus penghuni yang aman dan tertata rapi. Maksimal
+              satu motor per kamar untuk kenyamanan.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section
+      class="py-12 bg-gradient-to-r from-blue-600 to-indigo-700 text-white"
+    >
+      <div class="max-w-4xl mx-auto px-4 text-center">
+        <h3 class="text-2xl font-bold mb-4">Lingkungan Tertib & Nyaman</h3>
+        <p class="text-blue-100 mb-8 max-w-2xl mx-auto">
+          Kami menjunjung tinggi kenyamanan bersama. Untuk itu, kami memiliki
+          tata tertib standar yang berlaku bagi seluruh penghuni.
+        </p>
+        <button
+          onclick="openModal()"
+          class="bg-white text-blue-700 px-8 py-3 rounded-full font-bold shadow-lg hover:bg-yellow-300 hover:text-blue-900 transition transform hover:scale-105"
+        >
+          📄 Baca Tata Tertib Lengkap
+        </button>
+      </div>
+    </section>
+
+    <section class="py-20 bg-slate-50">
+      <div class="max-w-5xl mx-auto px-4">
+        <h2 class="text-3xl font-bold text-center mb-12 text-slate-900">
+          Apa Kata Mereka?
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div
+            class="bg-white p-8 rounded-2xl shadow-md border-l-4 border-primary relative"
+          >
+            <span
+              class="absolute top-4 right-6 text-6xl text-slate-100 font-serif"
+              >"</span
+            >
+            <p class="text-slate-600 italic mb-6 relative z-10">
+              Tempatnya bagus, sangat nyaman, fasilitasnya lengkap dan akses
+              kemana saja dekat. Sangat recommended buat mahasiswa baru.
+            </p>
+            <div class="flex items-center gap-4">
+              <div
+                class="w-10 h-10 bg-slate-200 rounded-full flex items-center justify-center"
+              >
+                👤
+              </div>
+              <div>
+                <p class="font-bold text-slate-800">Ni Putu Setia Gari C.</p>
+                <p class="text-xs text-slate-500">Mahasiswi</p>
+              </div>
+            </div>
+          </div>
+          <div
+            class="bg-white p-8 rounded-2xl shadow-md border-l-4 border-accent relative"
+          >
+            <span
+              class="absolute top-4 right-6 text-6xl text-slate-100 font-serif"
+              >"</span
+            >
+            <p class="text-slate-600 italic mb-6 relative z-10">
+              Posisi gak terlalu jauh dari jalan utama tapi nggak deket2 juga,
+              pokoknya pas jadi gak begitu bising. Bapak kosnya ramah.
+            </p>
+            <div class="flex items-center gap-4">
+              <div
+                class="w-10 h-10 bg-slate-200 rounded-full flex items-center justify-center"
+              >
+                👤
+              </div>
+              <div>
+                <p class="font-bold text-slate-800">Akhtar Alfarizi</p>
+                <p class="text-xs text-slate-500">Mahasiswa</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="harga" class="py-20 bg-white">
+      <div class="max-w-3xl mx-auto px-4">
+        <div
+          class="bg-slate-900 text-white rounded-3xl p-8 md:p-12 text-center shadow-2xl relative overflow-hidden"
+        >
+          <div
+            class="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-blue-500 to-yellow-500"
+          ></div>
+
+          <h2 class="text-3xl font-bold mb-2">Penawaran Spesial</h2>
+          <p class="text-slate-400 mb-8">
+            Hunian nyaman tanpa bikin kantong bolong
+          </p>
+
+          <div class="flex justify-center items-end gap-1 mb-6">
+            <span class="text-sm text-slate-400 pb-4">Mulai dari</span>
+            <span class="text-5xl md:text-6xl font-bold text-yellow-400"
+              >800rb</span
+            >
+            <span class="text-xl text-slate-400 pb-2">/bulan</span>
+          </div>
+
+          <p
+            class="text-sm text-slate-400 mb-8 border-t border-slate-700 pt-4 inline-block px-4"
+          >
+            *Belum termasuk biaya listrik (Token) dan air
+          </p>
+
+          <a
+            href="https://wa.me/6281338511041?text=Halo,%20saya%20mau%20booking%20kamar%20kos."
+            class="block w-full bg-primary hover:bg-blue-500 text-white font-bold py-4 rounded-xl transition shadow-lg"
+          >
+            Ambil Kamar Sekarang
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section id="kontak" class="py-20 bg-slate-50">
+      <div class="max-w-6xl mx-auto px-4">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl font-bold text-slate-900">Lokasi & Kontak</h2>
+          <p class="text-slate-500">Jangan ragu untuk survei lokasi langsung</p>
+        </div>
+
+        <div
+          class="grid grid-cols-1 lg:grid-cols-2 gap-10 bg-white p-6 rounded-3xl shadow-lg"
+        >
+          <div class="flex flex-col justify-center space-y-6 p-4">
+            <div>
+              <h3 class="text-xl font-bold text-slate-800 mb-2">Alamat</h3>
+              <p class="text-slate-600 flex items-start gap-2">
+                📍 Dajan Peken, Kec. Tabanan, Kabupaten Tabanan, Bali 82121
+              </p>
+            </div>
+            <div>
+              <h3 class="text-xl font-bold text-slate-800 mb-2">
+                Telepon / WhatsApp
+              </h3>
+              <p class="text-4xl font-bold text-blue-600">081-338-511-041</p>
+              <p class="text-slate-500 text-sm mt-1">
+                Fast response jam 08.00 - 20.00 WITA
+              </p>
+            </div>
+            <div>
+              <a
+                href="https://wa.me/6281338511041"
+                class="inline-flex items-center gap-2 bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded-lg font-bold transition shadow-md"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="20"
+                  height="20"
+                  fill="currentColor"
+                  class="bi bi-whatsapp"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z"
+                  />
+                </svg>
+                Chat via WhatsApp
+              </a>
+            </div>
+          </div>
+
+          <div
+            class="w-full h-80 lg:h-auto rounded-2xl overflow-hidden shadow-inner border border-slate-200"
+          >
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3945.6672877788483!2d115.12879319999999!3d-8.531645600000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd23bb5b2a1e959%3A0xeaf2cd70ee3828fa!2sKost%20Santiasih%20Dokabu%20Tabanan!5e0!3m2!1sid!2sid!4v1755571313057!5m2!1sid!2sid"
+              width="100%"
+              height="100%"
+              style="border: 0"
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+            >
+            </iframe>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer
+      class="bg-slate-900 text-slate-400 py-8 text-center border-t border-slate-800"
+    >
+      <p class="mb-2">© 2025 Ud Masih Farm and Computer.</p>
+      <p class="text-xs">Dibuat dengan ❤️ untuk Kos Santiasih</p>
     </footer>
 
-    <!-- JS untuk Toggle Menu Mobile -->
-    <script>
-      const menuBtn = document.getElementById("menu-btn");
-      const mobileMenu = document.getElementById("mobile-menu");
-      menuBtn.addEventListener("click", () => {
-        mobileMenu.classList.toggle("hidden");
-      });
-    </script>
     <div class="fixed bottom-6 right-6 z-50 flex flex-col gap-4">
-      
       <a
         href="https://wa.me/6281338511041?text=Halo,%20saya%20ingin%20bertanya%20apakah%20kos%20ini%20ada%20kamar%20kosong%3F"
         target="_blank"
@@ -244,7 +538,6 @@
           />
         </svg>
       </a>
-
       <a
         href="https://www.google.com/maps/dir/?api=1&destination=Kos+Santiasih+Tabanan"
         target="_blank"
@@ -252,13 +545,160 @@
         aria-label="Buka Google Maps"
         title="Buka Google Maps"
       >
-        <img 
-            src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Google_Maps_icon_%282020%29.svg" 
-            alt="Google Maps" 
-            class="w-8 h-8"
-        >
+        <img
+          src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Google_Maps_icon_%282020%29.svg"
+          alt="Google Maps"
+          class="w-8 h-8"
+        />
       </a>
-
     </div>
+
+    <div
+      id="rulesModal"
+      class="fixed inset-0 z-[100] hidden overflow-y-auto"
+      aria-labelledby="modal-title"
+      role="dialog"
+      aria-modal="true"
+    >
+      <div
+        class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0"
+      >
+        <div
+          class="fixed inset-0 bg-slate-900 bg-opacity-75 transition-opacity backdrop-blur-sm"
+          aria-hidden="true"
+          onclick="closeModal()"
+        ></div>
+        <span
+          class="hidden sm:inline-block sm:align-middle sm:h-screen"
+          aria-hidden="true"
+          >​</span
+        >
+        <div
+          class="inline-block align-bottom bg-white rounded-2xl text-left overflow-hidden shadow-2xl transform transition-all sm:my-8 sm:align-middle sm:max-w-2xl sm:w-full border border-slate-200"
+        >
+          <div
+            class="bg-gradient-to-r from-blue-600 to-indigo-700 px-4 py-4 sm:px-6 flex justify-between items-center"
+          >
+            <h3
+              class="text-lg leading-6 font-bold text-white flex items-center gap-2"
+              id="modal-title"
+            >
+              📜 Tata Tertib Kost
+            </h3>
+            <button
+              onclick="closeModal()"
+              class="text-white hover:text-yellow-300 transition"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-6 w-6"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M6 18L18 6M6 6l12 12"
+                />
+              </svg>
+            </button>
+          </div>
+          <div
+            class="bg-white px-4 pt-5 pb-4 sm:p-8 max-h-[70vh] overflow-y-auto"
+          >
+            <div class="prose max-w-none text-slate-700">
+              <ol
+                class="list-decimal pl-5 space-y-4 marker:text-blue-600 marker:font-bold"
+              >
+                <li>
+                  Penghuni tunduk dan taat aturan sesuai dengan
+                  Perundang-undangan yang berlaku secara Nasional dan Aturan
+                  Adat Desa Adat Kota Tabanan.
+                </li>
+                <li>
+                  Penghuni harus menjaga ketertiban, kebersihan dan kenyamanan
+                  di kamar masing-masing serta semua fasilitas bersama.
+                </li>
+                <li>
+                  Sampah diurus sendiri oleh penghuni kost dan dilarang menumpuk
+                  sampah di depan kamar atau di area kost.
+                </li>
+                <li>
+                  Penghuni dilarang mengajak teman menginap dan membawa binatang
+                  peliharaan (Anjing, Kucing, Burung, dll).
+                </li>
+                <li>
+                  Parkir motor khusus hanya untuk penghuni kost dan ditata
+                  dengan rapi.
+                </li>
+                <li>
+                  Penghuni dilarang membuang tisu, pembalut dll ke lubang kloset
+                  dan wastafel.
+                </li>
+                <li>
+                  Barang-barang milik kost (Lemari, Kasur, meja dll) tidak bisa
+                  dipindahkan ke tempat lain dengan dalih apapun.
+                </li>
+                <li>
+                  Penghuni dilarang menggandakan kunci, mengubah atau modifikasi
+                  kunci tanpa seijin Tuan Rumah.
+                </li>
+                <li>
+                  Sewa Kost yang Sudah dibayarkan tidak bisa diminta kembali
+                  dengan alasan apapun (No Refund).
+                </li>
+                <li>
+                  Hal-hal belum diatur seperti di atas akan disesuaikan
+                  kemudian.
+                </li>
+              </ol>
+              <div class="mt-8 pt-4 border-t border-slate-100 text-right">
+                <p class="font-bold text-slate-900">Pemilik Kost Santiasih</p>
+                <p class="text-slate-500 text-sm">I Putu Mudita, ST</p>
+              </div>
+            </div>
+          </div>
+          <div
+            class="bg-slate-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse border-t border-slate-200"
+          >
+            <button
+              type="button"
+              onclick="closeModal()"
+              class="w-full inline-flex justify-center rounded-xl border border-transparent shadow-sm px-6 py-2 bg-blue-600 text-base font-medium text-white hover:bg-blue-700 focus:outline-none sm:ml-3 sm:w-auto sm:text-sm transition"
+            >
+              Saya Mengerti
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const menuBtn = document.getElementById("menu-btn");
+      const mobileMenu = document.getElementById("mobile-menu");
+
+      menuBtn.addEventListener("click", () => {
+        mobileMenu.classList.toggle("hidden");
+      });
+
+      function openModal() {
+        document.getElementById("rulesModal").classList.remove("hidden");
+        document.body.style.overflow = "hidden";
+      }
+
+      function closeModal() {
+        document.getElementById("rulesModal").classList.add("hidden");
+        document.body.style.overflow = "auto";
+      }
+
+      // Tutup menu mobile saat link diklik
+      document.querySelectorAll("#mobile-menu a").forEach((link) => {
+        link.addEventListener("click", () => {
+          mobileMenu.classList.add("hidden");
+        });
+      });
+    </script>
   </body>
 </html>
