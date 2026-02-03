@@ -40,6 +40,13 @@
         background: rgba(37, 99, 235, 0.9);
         backdrop-filter: blur(10px);
       }
+      .hide-scroll::-webkit-scrollbar {
+        display: none;
+      }
+      .hide-scroll {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+      }
     </style>
   </head>
   <body class="bg-slate-50 text-slate-800 font-sans antialiased">
@@ -142,11 +149,17 @@
       </div>
 
       <div class="relative z-10 px-4 max-w-4xl mx-auto">
-        <span
-          class="inline-block py-1 px-3 rounded-full bg-yellow-400 text-blue-900 text-sm font-bold mb-4 shadow-lg animate-bounce"
+        <div
+          id="dynamicStatusContainer"
+          class="mb-6 flex justify-center min-h-[40px]"
         >
-          ✨ Terima Kost Putra & Putri
-        </span>
+          <span
+            class="inline-flex items-center px-4 py-2 rounded-full border border-white/30 bg-white/10 backdrop-blur-md text-white text-sm font-bold animate-pulse"
+          >
+            🔄 Memuat Status Kamar...
+          </span>
+        </div>
+
         <h1
           class="text-5xl md:text-7xl font-bold mb-6 leading-tight drop-shadow-lg"
         >
@@ -203,16 +216,6 @@
             Geser untuk melihat suasana kos kami yang asri
           </p>
         </div>
-
-        <style>
-          .hide-scroll::-webkit-scrollbar {
-            display: none;
-          }
-          .hide-scroll {
-            -ms-overflow-style: none;
-            scrollbar-width: none;
-          }
-        </style>
 
         <div
           class="flex overflow-x-auto snap-x snap-mandatory gap-6 pb-12 hide-scroll px-4 md:px-0"
@@ -310,7 +313,7 @@
         <div
           class="flex justify-center mt-4 text-slate-400 animate-pulse md:hidden"
         >
-          <span class="text-sm">Geser ke samping &rarr;</span>
+          <span class="text-sm">Geser ke samping →</span>
         </div>
       </div>
     </section>
@@ -748,6 +751,63 @@
         link.addEventListener("click", () => {
           mobileMenu.classList.add("hidden");
         });
+      });
+    </script>
+
+    <script type="module">
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+      import {
+        getDatabase,
+        ref,
+        onValue,
+      } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
+
+      // --- AREA GANTI KODE ---
+      // GANTI dengan Firebase Config yang Anda dapat dari Admin Panel
+      const firebaseConfig = {
+        apiKey: "AIzaSyDX1N9CL7XfkmIxR4gUT2ZhsXWwacioIiQ",
+
+        authDomain: "santiasih-app.firebaseapp.com",
+
+        databaseURL:
+          "https://santiasih-app-default-rtdb.asia-southeast1.firebasedatabase.app",
+
+        projectId: "santiasih-app",
+
+        storageBucket: "santiasih-app.firebasestorage.app",
+
+        messagingSenderId: "520261833890",
+
+        appId: "1:520261833890:web:78fafedbf8dc952967b3fb",
+      };
+
+      // ------------------------
+
+      const app = initializeApp(firebaseConfig);
+      const db = getDatabase(app);
+      const statusRef = ref(db, "kamar/status");
+      const container = document.getElementById("dynamicStatusContainer");
+
+      onValue(statusRef, (snapshot) => {
+        const status = snapshot.val();
+
+        if (status === "available") {
+          // Tampilan JIKA ADA KAMAR KOSONG
+          container.innerHTML = `
+            <span class="inline-flex items-center px-4 py-2 rounded-full border border-green-400 bg-green-500/20 backdrop-blur-md text-green-300 text-sm font-bold shadow-lg animate-pulse">
+                <span class="w-3 h-3 bg-green-500 rounded-full mr-2 shadow-[0_0_10px_#22c55e]"></span>
+                ✅ Ada Kamar Kosong
+            </span>
+            `;
+        } else {
+          // Tampilan JIKA PENUH
+          container.innerHTML = `
+            <span class="inline-flex items-center px-4 py-2 rounded-full border border-red-400 bg-red-500/20 backdrop-blur-md text-red-300 text-sm font-bold shadow-lg">
+                <span class="w-3 h-3 bg-red-500 rounded-full mr-2 shadow-[0_0_10px_#ef4444]"></span>
+                ❌ Maaf, Kamar Penuh
+            </span>
+            `;
+        }
       });
     </script>
   </body>

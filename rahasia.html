@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Panel - Kos Santiasih</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body
+    class="bg-slate-900 text-white min-h-screen flex items-center justify-center"
+  >
+    <div
+      id="loginScreen"
+      class="fixed inset-0 z-50 bg-slate-900 flex flex-col items-center justify-center p-4"
+    >
+      <div
+        class="bg-slate-800 p-8 rounded-2xl shadow-2xl border border-slate-700 w-full max-w-sm text-center"
+      >
+        <h2 class="text-2xl font-bold mb-4">🔐 Admin Access</h2>
+        <input
+          type="password"
+          id="passwordInput"
+          placeholder="Masukkan PIN Rahasia"
+          class="w-full bg-slate-700 text-white px-4 py-3 rounded-xl mb-4 focus:outline-none focus:ring-2 focus:ring-blue-500 border border-slate-600 text-center text-lg"
+        />
+        <button
+          onclick="checkPassword()"
+          class="w-full bg-blue-600 hover:bg-blue-500 text-white font-bold py-3 rounded-xl transition"
+        >
+          Buka Gembok
+        </button>
+        <p id="errorMsg" class="text-red-400 text-sm mt-4 hidden">
+          PIN Salah! Coba lagi.
+        </p>
+      </div>
+    </div>
+
+    <div
+      id="dashboard"
+      class="max-w-md w-full bg-slate-800 p-8 rounded-2xl shadow-2xl border border-slate-700 hidden filter blur-sm transition-all duration-500"
+    >
+      <div class="flex justify-between items-center mb-6">
+        <h1 class="text-2xl font-bold">🎛️ Control Panel</h1>
+        <button
+          onclick="logout()"
+          class="text-xs text-slate-400 hover:text-white bg-slate-700 px-3 py-1 rounded-full"
+        >
+          Keluar
+        </button>
+      </div>
+
+      <p class="text-slate-400 text-center mb-8">
+        Atur status kamar Kos Santiasih
+      </p>
+
+      <div class="mb-6 bg-slate-700/50 p-4 rounded-xl text-center">
+        <p class="text-sm text-slate-400 mb-1">Status di Website Sekarang:</p>
+        <h2
+          id="currentStatus"
+          class="text-xl font-bold text-yellow-400 animate-pulse"
+        >
+          Menghubungkan...
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-2 gap-4">
+        <button
+          id="btnAvailable"
+          class="p-4 rounded-xl bg-slate-700 hover:bg-green-600 transition border border-slate-600 hover:border-green-400 group relative overflow-hidden"
+        >
+          <div class="relative z-10">
+            <div class="text-3xl mb-2">✅</div>
+            <div class="font-bold text-slate-300 group-hover:text-white">
+              Ada Kosong
+            </div>
+          </div>
+        </button>
+        <button
+          id="btnFull"
+          class="p-4 rounded-xl bg-slate-700 hover:bg-red-600 transition border border-slate-600 hover:border-red-400 group relative overflow-hidden"
+        >
+          <div class="relative z-10">
+            <div class="text-3xl mb-2">❌</div>
+            <div class="font-bold text-slate-300 group-hover:text-white">
+              Penuh
+            </div>
+          </div>
+        </button>
+      </div>
+
+      <div
+        id="notification"
+        class="mt-6 text-center text-sm font-medium hidden"
+      ></div>
+    </div>
+
+    <script type="module">
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+      import {
+        getDatabase,
+        ref,
+        set,
+        onValue,
+      } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
+
+      // --- PASTE CONFIG ANDA DI SINI ---
+      const firebaseConfig = {
+        apiKey: "AIzaSyDX1N9CL7XfkmIxR4gUT2ZhsXWwacioIiQ",
+
+        authDomain: "santiasih-app.firebaseapp.com",
+
+        databaseURL:
+          "https://santiasih-app-default-rtdb.asia-southeast1.firebasedatabase.app",
+
+        projectId: "santiasih-app",
+
+        storageBucket: "santiasih-app.firebasestorage.app",
+
+        messagingSenderId: "520261833890",
+
+        appId: "1:520261833890:web:78fafedbf8dc952967b3fb",
+      };
+      // ---------------------------------
+
+      const app = initializeApp(firebaseConfig);
+      const db = getDatabase(app);
+      const statusRef = ref(db, "kamar/status");
+      const displayStatus = document.getElementById("currentStatus");
+
+      // Logic Password Sederhana
+      window.checkPassword = function () {
+        const input = document.getElementById("passwordInput").value;
+        if (input === "santiasih123#") {
+          document.getElementById("loginScreen").classList.add("hidden");
+          document.getElementById("dashboard").classList.remove("hidden");
+          document.getElementById("dashboard").classList.remove("blur-sm");
+          localStorage.setItem("admin_session", "active"); // Simpan sesi
+        } else {
+          document.getElementById("errorMsg").classList.remove("hidden");
+        }
+      };
+
+      window.logout = function () {
+        localStorage.removeItem("admin_session");
+        location.reload();
+      };
+
+      // Cek apakah sudah login sebelumnya
+      if (localStorage.getItem("admin_session") === "active") {
+        document.getElementById("loginScreen").classList.add("hidden");
+        document.getElementById("dashboard").classList.remove("hidden");
+        document.getElementById("dashboard").classList.remove("blur-sm");
+      }
+
+      // Logic Firebase (Sama seperti sebelumnya)
+      onValue(statusRef, (snapshot) => {
+        const data = snapshot.val();
+        if (data === "available") {
+          displayStatus.innerHTML =
+            '<span class="text-green-400">✅ Ada Kosong</span>';
+        } else {
+          displayStatus.innerHTML =
+            '<span class="text-red-400">❌ Penuh</span>';
+        }
+      });
+
+      function updateStatus(status) {
+        set(ref(db, "kamar/status"), status)
+          .then(() => showNotif("Sukses! Status diperbarui.", "text-green-400"))
+          .catch((error) => showNotif("Gagal: " + error, "text-red-400"));
+      }
+
+      document
+        .getElementById("btnAvailable")
+        .addEventListener("click", () => updateStatus("available"));
+      document
+        .getElementById("btnFull")
+        .addEventListener("click", () => updateStatus("full"));
+
+      function showNotif(msg, color) {
+        const notif = document.getElementById("notification");
+        notif.textContent = msg;
+        notif.className = `mt-6 text-center text-sm font-medium ${color}`;
+        notif.classList.remove("hidden");
+        setTimeout(() => notif.classList.add("hidden"), 3000);
+      }
+    </script>
+  </body>
+</html>
